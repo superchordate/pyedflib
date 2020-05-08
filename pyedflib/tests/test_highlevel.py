@@ -21,6 +21,7 @@ class TestHighLevel(unittest.TestCase):
         self.personalized = os.path.join(data_dir, u"personalized.edf")
         self.drop_from = os.path.join(data_dir, 'drop_from.edf')
         
+        
     def test_dig2phys_calc(self):
         signals_phys, shead, _ = highlevel.read_edf(self.test_generator)
         signals_dig, _, _ = highlevel.read_edf(self.test_generator, digital=True)
@@ -139,6 +140,7 @@ class TestHighLevel(unittest.TestCase):
     def test_read_write_accented(self):
         signals = np.random.rand(3, 256*60)
         highlevel.write_edf_quick(self.test_accented, signals, sfreq=256)
+        assert os.path.isfile(self.test_accented), '{} does not exist'.format(self.test_accented)
         signals2, _, _ = highlevel.read_edf(self.test_accented)
         
         np.testing.assert_allclose(signals, signals2, atol=0.00002)
