@@ -1943,7 +1943,8 @@ static struct edfhdrblock * edflib_check_edf_file(FILE *inputfile, int *edf_erro
 
 /**************************** DIGITAL MINIMUMS *************************************/
 
-  for(i=0; i<edfhdr->edfsignals; i++)
+  // turn off phys min check.
+  if(1==2) for(i=0; i<edfhdr->edfsignals; i++)
   {
     strncpy(scratchpad, edf_hdr + 256 + (edfhdr->edfsignals * 120) + (i * 8), 8);
     scratchpad[8] = 0;
@@ -2025,7 +2026,8 @@ static struct edfhdrblock * edflib_check_edf_file(FILE *inputfile, int *edf_erro
 
 /**************************** DIGITAL MAXIMUMS *************************************/
 
-  for(i=0; i<edfhdr->edfsignals; i++)
+  // disable digital maximums
+  if(1==2) for(i=0; i<edfhdr->edfsignals; i++)
   {
     strncpy(scratchpad, edf_hdr + 256 + (edfhdr->edfsignals * 128) + (i * 8), 8);
     scratchpad[8] = 0;
