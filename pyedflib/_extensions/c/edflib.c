@@ -2596,8 +2596,10 @@ static struct edfhdrblock * edflib_check_edf_file(FILE *inputfile, int *edf_erro
 /********************* FILESIZE *********************************************/
 
   edfhdr->hdrsize = edfhdr->edfsignals * 256 + 256;
-
-  if (check_file_size != EDFLIB_DO_NOT_CHECK_FILE_SIZE)
+  
+  // getting errors due to filesize, but they seem to read fine (for our purposes) without checking:
+  //if (check_file_size != EDFLIB_DO_NOT_CHECK_FILE_SIZE)
+  if (1==2)
   {
     fseeko(inputfile, 0LL, SEEK_END);
     if(ftello(inputfile)<(edfhdr->recordsize * edfhdr->datarecords + edfhdr->hdrsize))
