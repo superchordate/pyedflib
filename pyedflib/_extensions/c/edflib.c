@@ -1853,7 +1853,8 @@ static struct edfhdrblock * edflib_check_edf_file(FILE *inputfile, int *edf_erro
 
 /**************************** PHYSICAL DIMENSIONS *************************************/
 
-  for(i=0; i<edfhdr->edfsignals; i++)
+  // Disable phys dimensions check.
+  if(1==2) for(i=0; i<edfhdr->edfsignals; i++)
   {
     strncpy(scratchpad, edf_hdr + 256 + (edfhdr->edfsignals * 96) + (i * 8), 8);
     for(j=0; j<8; j++)
@@ -1873,7 +1874,8 @@ static struct edfhdrblock * edflib_check_edf_file(FILE *inputfile, int *edf_erro
 
 /**************************** PHYSICAL MINIMUMS *************************************/
 
-  for(i=0; i<edfhdr->edfsignals; i++)
+  // Disable phys dimensions check.
+  if(1==2) for(i=0; i<edfhdr->edfsignals; i++)
   {
     strncpy(scratchpad, edf_hdr + 256 + (edfhdr->edfsignals * 104) + (i * 8), 8);
     scratchpad[8] = 0;
@@ -1904,7 +1906,8 @@ static struct edfhdrblock * edflib_check_edf_file(FILE *inputfile, int *edf_erro
 
 /**************************** PHYSICAL MAXIMUMS *************************************/
 
-  for(i=0; i<edfhdr->edfsignals; i++)
+  // disable check.
+  if(1==2) for(i=0; i<edfhdr->edfsignals; i++)
   {
     strncpy(scratchpad, edf_hdr + 256 + (edfhdr->edfsignals * 112) + (i * 8), 8);
     scratchpad[8] = 0;
