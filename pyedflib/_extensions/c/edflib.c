@@ -1652,7 +1652,8 @@ static struct edfhdrblock * edflib_check_edf_file(FILE *inputfile, int *edf_erro
   strncpy(scratchpad, edf_hdr + 236, 8);
   scratchpad[8] = 0;
 
-  for(i=0; i<8; i++)
+  // disable check.
+  if(1==2) for(i=0; i<8; i++)
   {
     if((scratchpad[i]<32)||(scratchpad[i]>126))
     {
@@ -1663,7 +1664,8 @@ static struct edfhdrblock * edflib_check_edf_file(FILE *inputfile, int *edf_erro
     }
   }
 
-  if(edflib_is_integer_number(scratchpad))
+  // disable check.
+  if(1==2) if(edflib_is_integer_number(scratchpad))
   {
     *edf_error = EDFLIB_FILE_ERRORS_NUMBER_DATARECORDS;
     free(edf_hdr);
@@ -1671,8 +1673,9 @@ static struct edfhdrblock * edflib_check_edf_file(FILE *inputfile, int *edf_erro
     return(NULL);
   }
 
+  // disable check.
   edfhdr->datarecords = edflib_atof_nonlocalized(scratchpad);
-  if(edfhdr->datarecords<1)
+  if(1==2) if(edfhdr->datarecords<1)
   {
     *edf_error = EDFLIB_FILE_ERRORS_NUMBER_DATARECORDS;
     free(edf_hdr);
